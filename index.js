@@ -27,19 +27,19 @@ $(document).ready(()=>
     $(".btn").click(function(e){
         if (gameStarted && canClick){
             switch ($(this).attr("id")){
-                case "green": pressedColor("green");
+                case "green": pressedColor("green", 2);
                     compareButton(1);
                     green.play();
                     break;
-                case "red": pressedColor("red");
+                case "red": pressedColor("red", 2);
                     compareButton(2);
                     red.play();
                     break;
-                case "yellow": pressedColor("yellow");
+                case "yellow": pressedColor("yellow", 2);
                     compareButton(3);
                     yellow.play();
                     break;
-                case "blue": pressedColor("blue");
+                case "blue": pressedColor("blue", 2);
                     compareButton(4);
                     blue.play();
                     break;
@@ -48,11 +48,11 @@ $(document).ready(()=>
     }) 
 })
 
-function pressedColor(color){
+function pressedColor(color, timeModifier){
     $("#" + color).addClass("pressed");
     setTimeout(function(){
     $("#" + color).removeClass("pressed");
-    }, timeOut / 2);
+    }, timeOut / timeModifier);
 }
 
 function compareButton(press){   
@@ -88,32 +88,20 @@ function forLoop(){
     setTimeout(() => {
         switch (sequence[i]){
             // green
-            case 1: $("#green").addClass("pressed");
+            case 1: pressedColor("green", 1);
             green.play();
-            setTimeout(function(){
-                $("#green").removeClass("pressed");
-                }, timeOut);
             break;
             // red
-            case 2: $("#red").addClass("pressed");
+            case 2: pressedColor("red", 1);
             red.play();
-            setTimeout(function(){
-                $("#red").removeClass("pressed");
-                }, timeOut);
             break;
             // yellow
-            case 3: $("#yellow").addClass("pressed");
+            case 3: pressedColor("yellow", 1);
             yellow.play();
-            setTimeout(function(){
-                $("#yellow").removeClass("pressed");
-                }, timeOut);
             break;
             // blue
-            case 4: $("#blue").addClass("pressed");
+            case 4: pressedColor("blue", 1);
             blue.play();
-            setTimeout(function(){
-                $("#blue").removeClass("pressed");
-                }, timeOut);
             break;
             // default
             default: break;
