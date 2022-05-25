@@ -84,6 +84,7 @@ function pressButtons(){
     }
 }
 function forLoop(){
+    canClick = false;
     setTimeout(() => {
         switch (sequence[i]){
             // green
@@ -122,6 +123,7 @@ function forLoop(){
             forLoop();
         }
         else{
+            canClick = true;
             i = 0;
         }
     }, timeOut + 200);
